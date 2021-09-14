@@ -21,9 +21,15 @@ const set = (name: string, uri: string): void => {
     : {};
 
   // Set / override existing config
-  currentConfig[name] = uri;
+  const newconfig = {
+    ...currentConfig,
+    secrets: {
+      ...currentConfig.secrets,
+      [name]: uri,
+    },
+  };
 
-  fs.writeFileSync(CONFIG_PATH, JSON.stringify(currentConfig));
+  fs.writeFileSync(CONFIG_PATH, JSON.stringify(newconfig));
 
   printOutput({
     type: 'success',

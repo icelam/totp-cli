@@ -24,7 +24,7 @@ const generate = (configKey: string): void => {
   // Generate TOTP
   const config = getJsonFromFile(CONFIG_PATH);
 
-  if (!config[configKey]) {
+  if (!config.secrets?.[configKey]) {
     printOutput({
       type: 'error',
       title: 'Could not load configuration.',
@@ -34,7 +34,7 @@ const generate = (configKey: string): void => {
     process.exit(1);
   }
 
-  const otpauthUri = decodeURIComponent(config[configKey]);
+  const otpauthUri = decodeURIComponent(config.secrets[configKey]);
 
   // Terminate program if type or secret is incorrect
   const validationResult = validateOtpauthUri(otpauthUri);

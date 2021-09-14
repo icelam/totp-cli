@@ -4,12 +4,17 @@ Generates TOTP code for MFA using terminal.
 
 ## Prerequisites
 
-* Node 12 installed
+* Node >= 12 installed
 
 ## Install 
 
-```
-npm install -g git+https://github.com/icelam/totp-cli.git
+```bash
+git clone https://github.com/icelam/totp-cli.git
+cd ./totp-cli/
+yarn
+yarn build
+cd ../
+npm install -g ./totp-cli/
 ```
 
 ### Usage

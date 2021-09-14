@@ -1,4 +1,5 @@
-const printHelp = (): void => {
+/** Print CLI help */
+const help = (): void => {
   console.log(`
 Usage:
   totp [command]
@@ -15,4 +16,4 @@ Available Commands:
   `);
 };
 
-export default printHelp;
+export default help;

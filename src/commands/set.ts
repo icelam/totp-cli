@@ -1,13 +1,18 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import { getJsonFromFile, printOutput } from './utils';
-import { CONFIG_PATH } from './constants';
-import printHelp from './printHelp';
+import { getJsonFromFile, printOutput } from '../utils';
+import { CONFIG_PATH } from '../constants';
+import help from './help';
 
-const setConfig = (name: string, uri: string): void => {
+/**
+ * Save provided <otpauth_uri> into config under configuration set named <config_name>
+ * @param name Configuration set name
+ * @param uri Otpauth uri
+ */
+const set = (name: string, uri: string): void => {
   if (!name || typeof name !== 'string' || !uri || typeof uri !== 'string') {
     console.log(chalk.red('totp: invalid command'));
-    printHelp();
+    help();
     process.exit(1);
   }
 
@@ -27,4 +32,4 @@ const setConfig = (name: string, uri: string): void => {
   });
 };
 
-export default setConfig;
+export default set;

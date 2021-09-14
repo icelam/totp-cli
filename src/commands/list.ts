@@ -1,8 +1,9 @@
 import fs from 'fs';
-import { getJsonFromFile, printOutput } from './utils';
-import { CONFIG_PATH } from './constants';
+import { getJsonFromFile, printOutput } from '../utils';
+import { CONFIG_PATH } from '../constants';
 
-const listConfigKeys = (): void => {
+/** List all the available configuration set */
+const list = (): void => {
   const LIST_PREFIX = '- ';
 
   const config = fs.existsSync(CONFIG_PATH)
@@ -22,4 +23,4 @@ const listConfigKeys = (): void => {
   });
 };
 
-export default listConfigKeys;
+export default list;

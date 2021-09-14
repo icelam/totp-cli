@@ -3,9 +3,13 @@ import chalk from 'chalk';
 import { writeSync as copy } from 'clipboardy';
 import {
   validateOtpauthUri, parseOtpauthUri, generateTotp, printOutput, getJsonFromFile,
-} from './utils';
-import { CONFIG_PATH } from './constants';
+} from '../utils';
+import { CONFIG_PATH } from '../constants';
 
+/**
+ * Generate TOTP using configuration set <config_name>
+ * @param configKey Configuration set name
+ */
 const generate = (configKey: string): void => {
   if (!fs.existsSync(CONFIG_PATH)) {
     printOutput({
@@ -66,7 +70,7 @@ const generate = (configKey: string): void => {
 
   printOutput({
     type: 'success',
-    title: 'Your TOTP ready to use for next 30s.',
+    title: 'Your TOTP is available for next 30s.',
     content: outputContent,
     remarks: 'Copied TOTP code to clipboard!',
   });

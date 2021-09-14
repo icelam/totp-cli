@@ -7,6 +7,11 @@ type UriData = {
   issuer?: string;
 }
 
+/**
+ * Parse and extract `type`, `name`, `secret` and `issuer` from otpauth URI
+ * @param otpauthUri otpauth:// URI provided by service provider
+ * @returns Objects containing `type`, `name`, `secret` and `issuer`
+ */
 const parseOtpauthUri = (otpauthUri: string): UriData => {
   const otpauthData = url.parse(otpauthUri, true);
   const type = otpauthData.host ?? undefined;

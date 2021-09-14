@@ -1,5 +1,10 @@
 import parseOtpauthUri from './parseOtpauthUri';
 
+/**
+ * @typedef ValidationResult - Return type of validate otpauth URI
+ * @prop valid Validation result
+ * @prop error Error message if validation failed
+ */
 type ValidationResult = {
   valid: true;
 } | {
@@ -7,6 +12,11 @@ type ValidationResult = {
   error: string;
 };
 
+/**
+ * Validates if a otpauth URI is valid by checking the type and secret
+ * @param otpauthUri otpauth:// URI provided by service provider
+ * @returns Validation result
+ */
 const validateOtpauthUri = (otpauthUri: string): ValidationResult => {
   const OTPAUTH_URI_REGEX = /^otpauth:\/\/totp\/(.*)$/;
   try {
